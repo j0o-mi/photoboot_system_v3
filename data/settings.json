@@ -1,0 +1,13 @@
+{
+  "adminPin": "1234",
+  "countdownSeconds": 3,
+  "cameraWidth": 1280,
+  "cameraHeight": 720,
+  "cameraIndex": 0,
+  "googleDriveFolderId": "1uLtJ5DsriOQ7N2pKX3b4uMfBU75QaHVb",
+  "googleDriveEnabled": true,
+  "serviceAccountPath": "data/credentials/client_secret.json",
+  "printEnabled": true,
+  "printerName": "OneNote (Desktop)",
+  "autoResetSeconds": 30
+}
