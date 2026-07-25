@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Result Screen: shows final collage preview + on-demand upload/QR/print -->
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.boothyeah.controller.ResultController"
+            styleClass="root-pane" fx:id="rootPane">
+
+    <!-- Title at top -->
+    <top>
+        <VBox alignment="CENTER" spacing="5">
+            <padding><Insets top="30" bottom="10"/></padding>
+            <Label text="Your Photo Strip" styleClass="heading"/>
+            <Label text="Preview your photos before sharing" styleClass="body-text"/>
+        </VBox>
+    </top>
+
+    <!-- Main content: collage (left) + actions (right) -->
+    <center>
+        <HBox alignment="CENTER" spacing="40">
+            <padding><Insets top="20" bottom="20" left="40" right="40"/></padding>
+
+            <!-- Final collage preview -->
+            <VBox alignment="CENTER" spacing="10" styleClass="glass-card">
+                <ImageView fx:id="collageView" preserveRatio="true" fitHeight="550"/>
+            </VBox>
+
+            <!-- Right panel: QR area + action buttons -->
+            <VBox alignment="CENTER" spacing="25" prefWidth="350">
+
+                <!-- QR Code area (hidden until upload completes) -->
+                <VBox fx:id="qrBox" alignment="CENTER" spacing="15" styleClass="glass-card"
+                      visible="false" managed="false">
+                    <Label text="Scan to Download" styleClass="heading-xs"/>
+                    <ImageView fx:id="qrView" preserveRatio="true" fitWidth="220" fitHeight="220"/>
+                    <Label fx:id="linkLabel" text="" styleClass="text-muted" wrapText="true" maxWidth="280"/>
+                </VBox>
+
+                <!-- Upload status (shown during upload) -->
+                <VBox fx:id="uploadStatusBox" alignment="CENTER" spacing="10" visible="false" managed="false">
+                    <ProgressIndicator fx:id="uploadProgress" prefWidth="50" prefHeight="50"
+                                       style="-fx-progress-color: #FFD700;"/>
+                    <Label fx:id="uploadStatusLabel" text="Uploading..." styleClass="body-text"/>
+                </VBox>
+
+                <!-- Action buttons -->
+                <VBox alignment="CENTER" spacing="15">
+                    <!-- Upload & Get QR button -->
+                    <Button fx:id="uploadBtn" text="☁  Upload &amp; Get QR Code" styleClass="btn-secondary"
+                            onAction="#onUpload" style="-fx-font-size: 20px; -fx-padding: 14 35;"/>
+
+                    <!-- Print button -->
+                    <Button fx:id="printBtn" text="🖨  Print" styleClass="btn-secondary"
+                            onAction="#onPrint" style="-fx-font-size: 20px; -fx-padding: 14 35;"/>
+
+                    <!-- Done button -->
+                    <Button text="✓  Done" styleClass="btn-secondary" onAction="#onDone"
+                            style="-fx-font-size: 20px; -fx-padding: 14 45;"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

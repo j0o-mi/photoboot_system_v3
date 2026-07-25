@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Processing Screen: shows progress while compositing, uploading, generating QR -->
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.boothyeah.controller.ProcessingController"
+           styleClass="root-pane" fx:id="rootPane">
+
+    <VBox alignment="CENTER" spacing="40">
+        <padding><Insets top="50" bottom="50" left="50" right="50"/></padding>
+
+        <Label text="Creating Your Photo Strip" styleClass="heading" fx:id="titleLabel"/>
+
+        <ProgressIndicator fx:id="progressIndicator" prefWidth="120" prefHeight="120"
+                           style="-fx-progress-color: #FFD700;"/>
+
+        <Label fx:id="statusLabel" text="Processing photos..." styleClass="body-text"
+               style="-fx-font-size: 22px;"/>
+
+        <Label fx:id="subStatusLabel" text="" styleClass="text-muted"/>
+    </VBox>
+</StackPane>
