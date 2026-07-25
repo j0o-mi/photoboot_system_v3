@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.boothyeah.controller.FilterController"
+      styleClass="root-pane" fx:id="rootPane" spacing="20" alignment="TOP_CENTER">
+
+    <padding><Insets top="30" bottom="30" left="30" right="30"/></padding>
+
+    <!-- Title -->
+    <Label text="Choose a Filter for Your Photos" styleClass="heading, filter-title" fx:id="titleLabel"/>
+
+    <!-- Main content container -->
+    <HBox spacing="40" alignment="CENTER" VBox.vgrow="ALWAYS">
+        <padding><Insets top="20"/></padding>
+
+        <!-- Center: Preview Image -->
+        <VBox alignment="CENTER" spacing="15" HBox.hgrow="ALWAYS" styleClass="filter-preview-card">
+            <ImageView fx:id="previewImage" preserveRatio="true" fitWidth="400" fitHeight="600"
+                       styleClass="preview-image"/>
+            <Label text="Live Preview" styleClass="text-muted" alignment="CENTER" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+        <!-- Right: Vertical Filter Selection List -->
+        <VBox spacing="18" prefWidth="300" minWidth="260" maxWidth="320" styleClass="filter-panel">
+            <Label fx:id="selectedFilterLabel" text="Selected: Original" styleClass="selected-filter-badge"/>
+
+            <Separator styleClass="filter-separator"/>
+
+            <ScrollPane fitToWidth="true" fitToHeight="false" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                        styleClass="filter-scroll" VBox.vgrow="ALWAYS">
+                <VBox fx:id="filterButtonBox" spacing="10" alignment="TOP_CENTER" styleClass="filter-button-box">
+                    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                </VBox>
+            </ScrollPane>
+
+            <Separator styleClass="filter-separator"/>
+
+            <!-- Loading Indicator & Status Label -->
+            <VBox alignment="CENTER" spacing="8">
+                <ProgressIndicator fx:id="applyProgress" visible="false" managed="false" prefWidth="30" prefHeight="30"/>
+                <Label fx:id="applyStatusLabel" visible="false" managed="false" styleClass="text-muted"/>
+            </VBox>
+
+            <!-- Action Buttons -->
+            <VBox spacing="12" alignment="CENTER">
+                <Button fx:id="applyBtn" text="✓ Apply Filter &amp; Continue"
+                        styleClass="btn-primary" style="-fx-font-size: 18px;" maxWidth="Infinity"
+                        onAction="#onApplyFilter"/>
+                <Button fx:id="backBtn" text="← Back to Capture"
+                        styleClass="btn-secondary" style="-fx-font-size: 16px;" maxWidth="Infinity"
+                        onAction="#onBack"/>
+            </VBox>
+
+            <Label text="💡 Select a filter to preview it on your photos, then click Apply to continue"
+                   styleClass="filter-info-text" alignment="CENTER" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>

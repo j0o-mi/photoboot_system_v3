@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Admin Dashboard: tabbed interface for managing templates, settings, etc. -->
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.boothyeah.controller.AdminController"
+            styleClass="root-pane" fx:id="rootPane">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <padding><Insets top="20" bottom="10" left="30" right="30"/></padding>
+            <Label text="Admin Dashboard" styleClass="heading-smx"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="✕  Close" styleClass="btn-secondary" onAction="#onClose"
+                    style="-fx-font-size: 16px; -fx-padding: 8 20;"/>
+        </HBox>
+    </top>
+
+    <!-- Tabbed content -->
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+            <padding><Insets top="10" bottom="20" left="20" right="20"/></padding>
+
+            <!-- Tab 1: Templates -->
+            <Tab text="Templates">
+                <VBox spacing="20" styleClass="settings-card" alignment="TOP_LEFT" maxHeight="-Infinity">
+                    <padding><Insets top="20" left="20" right="20"/></padding>
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Manage Templates" styleClass="heading-xs"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add Template" styleClass="btn-primary" onAction="#onAddTemplate"
+                                style="-fx-font-size: 16px; -fx-padding: 10 20;"/>
+                    </HBox>
+                    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+                        <FlowPane fx:id="adminTemplateGrid" hgap="20" vgap="20">
+                            <padding><Insets top="10" bottom="20"/></padding>
+                        </FlowPane>
+                    </ScrollPane>
+                </VBox>
+            </Tab>
+
+            <!-- Tab 2: Google Drive -->
+            <Tab text="Google Drive">
+                <VBox spacing="20" styleClass="settings-card" alignment="TOP_LEFT" maxHeight="-Infinity">
+                    <padding><Insets top="20" left="20" right="20"/></padding>
+                    <Label text="Google Drive" styleClass="heading-xs"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Folder ID:" styleClass="admin-label" prefWidth="130"/>
+                        <TextField fx:id="driveFolderField" styleClass="admin-field"
+                                   promptText="Enter Google Drive folder ID" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="OAuth JSON:" styleClass="admin-label" prefWidth="130"/>
+                        <TextField fx:id="serviceAccountField" styleClass="admin-field"
+                                   promptText="Path to oauth_credentials.json" HBox.hgrow="ALWAYS"/>
+                        <Button text="Browse" styleClass="btn-secondary" onAction="#onBrowseCredentials"
+                                style="-fx-font-size: 14px; -fx-padding: 6 15;"/>
+                    </HBox>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <CheckBox fx:id="driveEnabledCheck" text="Enable Google Drive"
+                                  styleClass="admin-label"/>
+                    </HBox>
+
+                    <HBox spacing="15">
+                        <Button text="Test Connection" styleClass="btn-secondary" onAction="#onTestDrive"
+                                style="-fx-font-size: 18px; -fx-padding: 8 20;"/>
+                        <Label fx:id="driveStatusLabel" text="" styleClass="admin-label"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <!-- Tab 3: Printer -->
+            <Tab text="Printer">
+                <VBox spacing="20" styleClass="settings-card" alignment="TOP_LEFT" maxHeight="-Infinity">
+                    <padding><Insets top="20" left="20" right="20"/></padding>
+                    <Label text="Printer Settings" styleClass="heading-xs"/>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <CheckBox fx:id="printEnabledCheck" text="Enable Printing for Users"
+                                  styleClass="admin-label"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Printer:" styleClass="admin-label" prefWidth="130"/>
+                        <ComboBox fx:id="printerCombo" styleClass="admin-field" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+
+                    <Button text="Test Print" styleClass="btn-secondary" onAction="#onTestPrint"
+                            style="-fx-font-size: 14px; -fx-padding: 8 20;"/>
+                </VBox>
+            </Tab>
+
+            <!-- Tab 4: Settings -->
+            <Tab text="Settings">
+                <VBox spacing="20" styleClass="settings-card" alignment="TOP_LEFT" maxHeight="-Infinity">
+                    <padding><Insets top="20" left="20" right="20"/></padding>
+                    <Label text="General Settings" styleClass="heading-xs"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Countdown (sec):" styleClass="admin-label" prefWidth="160"/>
+                        <Spinner fx:id="countdownSpinner" prefWidth="100"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Auto-reset (sec):" styleClass="admin-label" prefWidth="160"/>
+                        <Spinner fx:id="autoResetSpinner" prefWidth="100"/>
+                    </HBox>
+
+                    <Separator style="-fx-background-color: #555;"/>
+                    <Label text="Camera" styleClass="heading-xs"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Camera Device:" styleClass="admin-label" prefWidth="160"/>
+                        <ComboBox fx:id="cameraCombo" styleClass="admin-field" HBox.hgrow="ALWAYS"/>
+                        <Button text="🔍 Detect" styleClass="btn-secondary" onAction="#onDetectCameras"
+                                style="-fx-font-size: 14px; -fx-padding: 6 15;"/>
+                    </HBox>
+                    <Label text="Supports webcams, UVC/webcam-mode DSLRs, and HDMI capture devices. Select a device, then save settings."
+                           styleClass="text-muted" wrapText="true"/>
+
+                    <Separator style="-fx-background-color: #555;"/>
+                    <Label text="Security" styleClass="heading-xs"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Admin PIN:" styleClass="admin-label" prefWidth="160"/>
+                        <PasswordField fx:id="pinField" styleClass="admin-field" prefWidth="150"/>
+                        <Button text="Update PIN" styleClass="btn-secondary" onAction="#onUpdatePin"
+                                style="-fx-font-size: 14px; -fx-padding: 6 15;"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <!-- Tab 5: History / Drive Gallery -->
+            <Tab text="History">
+                <VBox spacing="20" styleClass="settings-card" alignment="TOP_LEFT" maxHeight="-Infinity">
+                    <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+                    <HBox alignment="CENTER_LEFT" spacing="20">
+                        <Label text="Google Drive Gallery" styleClass="heading-xs"/>
+                        <Button text="↻ Refresh" styleClass="btn-secondary" onAction="#onRefreshDrive"
+                                style="-fx-font-size: 14px; -fx-padding: 6 15;"/>
+                        <Label fx:id="driveStatusText" text="" styleClass="text-muted"/>
+                    </HBox>
+
+                    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+                        <FlowPane fx:id="driveGalleryPane" hgap="15" vgap="15" prefWrapLength="800"/>
+                    </ScrollPane>
+
+                    <Separator style="-fx-background-color: #555;"/>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Local Output Cache:" styleClass="admin-label"/>
+                        <Label fx:id="outputSizeLabel" text="0 MB" styleClass="text-muted"/>
+                        <Button text="Clear Local Cache" styleClass="btn-danger" onAction="#onClearOutput"
+                                style="-fx-font-size: 14px; -fx-padding: 4 15;"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <!-- Save bar at bottom -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="15">
+            <padding><Insets top="10" bottom="20" left="30" right="30"/></padding>
+            <Label fx:id="saveStatusLabel" text="" styleClass="text-muted"/>
+            <Button text="Save All Settings" styleClass="btn-primary" onAction="#onSaveSettings"
+                    style="-fx-font-size: 18px; -fx-padding: 12 30;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

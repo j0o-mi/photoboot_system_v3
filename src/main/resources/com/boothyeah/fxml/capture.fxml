@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Capture Screen: live camera feed + countdown + preview with Accept/Retake -->
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.boothyeah.controller.CaptureController"
+           styleClass="root-pane" fx:id="rootPane">
+
+    <!-- Layer 1: Camera Feed & Last Photo Preview -->
+    <VBox alignment="CENTER" spacing="20" StackPane.alignment="CENTER">
+        <!-- Live Camera Feed + Template Overlay Canvas stacked together -->
+        <StackPane fx:id="cameraStack" alignment="CENTER">
+            <ImageView fx:id="cameraView" preserveRatio="true" fitHeight="520"/>
+            <Canvas fx:id="templateGuideCanvas"/>
+        </StackPane>
+        
+        <!-- Previous photos preview strip (below camera feed) -->
+        <VBox alignment="CENTER">
+            <Label text="Your Shots" styleClass="text-muted" style="-fx-font-size: 24px; -fx-padding: 0 0 10 0;"/>
+            <HBox fx:id="thumbnailBox" spacing="20" alignment="CENTER"/>
+        </VBox>
+    </VBox>
+
+    <!-- Layer 2: Photo Counter (top-left) -->
+    <Label fx:id="photoCounter" text="Photo 1 of 3" styleClass="photo-counter"
+           StackPane.alignment="TOP_LEFT">
+        <StackPane.margin><Insets top="30" left="30"/></StackPane.margin>
+    </Label>
+
+
+
+    <!-- Layer 4: Countdown overlay (centered, shown during countdown) -->
+    <StackPane fx:id="countdownOverlay" visible="false" style="-fx-background-color: rgba(0,0,0,0.5);">
+        <Label fx:id="countdownLabel" text="3" styleClass="countdown"/>
+    </StackPane>
+
+    <!-- Layer 5: "Take Photo" button (bottom center, shown when WAITING_TO_START) -->
+    <Button fx:id="takePhotoBtn" text="📸  Take Photo" styleClass="btn-primary"
+            onAction="#onTakePhoto" StackPane.alignment="BOTTOM_CENTER"
+            style="-fx-font-size: 28px; -fx-padding: 18 50;">
+        <StackPane.margin><Insets bottom="60"/></StackPane.margin>
+    </Button>
+
+    <!-- Layer 5b: Back button (bottom-left, shown when WAITING_TO_START) -->
+    <Button fx:id="backBtn" text="←  Back" styleClass="btn-secondary"
+            onAction="#onBack" StackPane.alignment="BOTTOM_LEFT"
+            style="-fx-font-size: 18px; -fx-padding: 12 25;">
+        <StackPane.margin><Insets bottom="60" left="30"/></StackPane.margin>
+    </Button>
+
+    <!-- Layer 6: Preview overlay (shown after capture) -->
+    <VBox fx:id="previewOverlay" visible="false" alignment="CENTER" spacing="30"
+          styleClass="preview-overlay">
+        <padding><Insets top="40" bottom="40" left="40" right="40"/></padding>
+
+        <Label text="Looking good?" styleClass="heading-sm"/>
+        <ImageView fx:id="previewImage" preserveRatio="true"/>
+
+        <HBox alignment="CENTER" spacing="40">
+            <Button text="✓  Accept" styleClass="btn-accept" onAction="#onAccept" fx:id="acceptBtn"/>
+            <Button text="↻  Retake" styleClass="btn-retake" onAction="#onRetake" fx:id="retakeBtn"/>
+        </HBox>
+    </VBox>
+</StackPane>

@@ -1,0 +1,410 @@
+/* =============================================================
+   BoothYeah Photobooth — Global Stylesheet
+   ============================================================= */
+
+/* --- Root Variables --- */
+.root {
+    -fx-font-family: "Inter", "Segoe UI", "Helvetica", sans-serif;
+    -fx-font-size: 16px;
+    -boothyeah-bg: #0a0a0a;
+    -boothyeah-bg-card: #1a1a2e;
+    -boothyeah-accent: #FFD700;
+    -boothyeah-accent2: #FF00FF;
+    -boothyeah-text: #f0f0f0;
+    -boothyeah-text-muted: #888888;
+    -boothyeah-danger: #ff4444;
+    -boothyeah-success: #44ff88;
+}
+
+/* --- Global Pane Backgrounds --- */
+.root-pane {
+    -fx-background-color: #ffffff;
+    -fx-background-image: url("/com/boothyeah/image/idle-background.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* --- Headings --- */
+.heading {
+    -fx-font-family: "Boring Time", "Space Grotesk", sans-serif;
+    -fx-font-size: 80px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #7CB342;
+    -fx-effect: dropshadow(one-pass-box, #ffffff, 25, 1.0, 0, 0);
+}
+
+.heading-sm {
+    -fx-font-family: "Purple Smile", "Space Grotesk", sans-serif;
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f0f0f0;
+
+}
+
+.heading-smx {
+    -fx-font-family: "Boring Time", "Space Grotesk", sans-serif;
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #7CB342;
+    -fx-background-color: #ffffff;
+    -fx-padding: 8 20;
+    -fx-background-radius: 15;
+}
+
+.heading-xs {
+    -fx-font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+/* --- Body Text --- */
+.body-text {
+    -fx-font-family: "Purple Smile", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-text-fill: #000000;
+}
+
+.text-muted {
+    -fx-font-family: "Boring Time", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-text-fill: #5C872F;
+    -fx-font-size: 15px;
+}
+
+/* --- Countdown Display --- */
+.countdown {
+    -fx-font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 250px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD700;
+    -fx-effect: dropshadow(gaussian, rgba(255,215,0,0.6), 30, 0.5, 0, 0);
+}
+
+/* --- Photo Counter --- */
+.photo-counter {
+    -fx-font-family: "Boring Time", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5C872F;
+    -fx-padding: 10 20;
+    -fx-background-color: rgba(255,255,255,1);
+    -fx-background-radius: 23;
+}
+
+/* ===================== BUTTONS ===================== */
+
+.btn-primary {
+    -fx-font-family: "Boring Time", "Space Grotesk", sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0a0a0a;
+    -fx-background-color: #93E43D;
+    -fx-background-radius: 30;
+    -fx-padding: 16 48;
+    -fx-cursor: hand;
+    -fx-border-color: #5C872F;
+    -fx-border-width: 3;
+    -fx-border-style: solid;
+    -fx-border-radius: 30;
+}
+.btn-primary:hover {
+    -fx-background-color: #7CB342;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 30, 0.4, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.btn-primary:pressed {
+    -fx-background-color: #e6c200;
+    -fx-text-fill: #000000;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.btn-secondary {
+    -fx-font-family: "Boring Time", "Space Grotesk", sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-background-color: #93E43D;
+    -fx-border-color: #5D7248;
+    -fx-border-width: 3;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-padding: 14 40;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover {
+    -fx-background-color: #7CB342;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 30, 0.4, 0, 6);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.btn-secondary:pressed {
+    -fx-background-color: #e6c200;
+    -fx-text-fill: #000000;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.btn-danger {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #ff4444;
+    -fx-background-radius: 20;
+    -fx-padding: 10 30;
+    -fx-cursor: hand;
+}
+.btn-danger:hover {
+    -fx-background-color: #ff6666;
+}
+
+.btn-accept {
+    -fx-font-family: "Boring Time", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0a0a0a;
+    -fx-background-color: #44ff88;
+    -fx-background-radius: 25;
+    -fx-padding: 14 40;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(68,255,136,0.4), 15, 0.3, 0, 3);
+}
+.btn-accept:hover {
+    -fx-background-color: #66ffaa;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.btn-retake {
+    -fx-font-family: "Boring Time", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD700;
+    -fx-background-color: transparent;
+    -fx-border-color: #FFD700;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-padding: 14 40;
+    -fx-cursor: hand;
+}
+.btn-retake:hover {
+    -fx-background-color: rgba(248,209,0,0.15);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* ===================== CARDS ===================== */
+
+.template-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 26;
+    -fx-border-width: 10;
+    -fx-border-color: #edf4d8;
+    -fx-border-radius: 20;
+    -fx-padding: 15;
+    -fx-cursor: hand;
+}
+.template-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0.4, 0, 6);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.glass-card {
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255,255,255,0.12);
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-padding: 20;
+}
+
+/* ===================== PROGRESS ===================== */
+.progress-indicator .indicator {
+    -fx-progress-color: #FFD700;
+}
+
+.progress-label {
+    -fx-font-size: 22px;
+    -fx-text-fill: #cccccc;
+}
+
+/* ===================== FILTER SELECTION SCREEN ===================== */
+
+.filter-title {
+    -fx-font-size: 60px;
+}
+
+.filter-preview-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 26;
+    -fx-border-color: #AFD885;
+    -fx-border-width: 6;
+    -fx-border-radius: 26;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0.3, 0, 6);
+}
+
+.preview-image {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.2, 0, 3);
+}
+
+.filter-panel {
+    -fx-background-color: #F7FBF0;
+    -fx-background-radius: 26;
+    -fx-border-color: #edf4d8;
+    -fx-border-width: 3;
+    -fx-border-radius: 26;
+    -fx-padding: 25;
+}
+
+.selected-filter-badge {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #7CB342;
+    -fx-background-radius: 20;
+    -fx-padding: 8 20;
+}
+
+.filter-separator .line {
+    -fx-border-color: #AFD885;
+    -fx-border-width: 1 0 0 0;
+}
+
+.filter-scroll,
+.filter-scroll > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.filter-scroll .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+}
+.filter-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #AFD885;
+    -fx-background-radius: 6;
+}
+
+.filter-button-box {
+    -fx-background-color: transparent;
+}
+
+#filterButtonBox .button {
+    -fx-font-family: "Boring Time", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5C872F;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #AFD885;
+    -fx-border-width: 2;
+    -fx-border-radius: 18;
+    -fx-background-radius: 18;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+    -fx-max-width: infinity;
+    -fx-alignment: CENTER_LEFT;
+}
+#filterButtonBox .button:hover {
+    -fx-background-color: #edf4d8;
+    -fx-border-color: #7CB342;
+}
+
+#filterButtonBox .button.filter-chip-selected {
+    -fx-background-color: #93E43D;
+    -fx-border-color: #5C872F;
+    -fx-text-fill: #0a0a0a;
+}
+
+.filter-info-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7c9a63;
+    -fx-wrap-text: true;
+}
+
+/* ===================== ADMIN TAB NAVIGATION BAR ===================== */
+
+.tab-pane .tab-header-area {
+    -fx-padding: 16 16;
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-border-color: #AFD885;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 16;
+    -fx-padding: 5 22;
+    -fx-cursor: hand;
+    -fx-background-insets: 0 6 0 6;
+    -fx-border-insets: 0 6 0 6;
+}
+.tab-pane .tab:hover {
+    -fx-background-color: #EDF4D8;
+    -fx-border-color: #7CB342;
+    -fx-scale-x: 0.90;
+    -fx-scale-y: 0.90;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #93E43D;
+    -fx-border-color: #5C872F;
+    -fx-border-width: 2.5;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-font-family: "Boring Time", "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5C872F;
+    -fx-alignment: CENTER;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #0A0A0A;
+}
+
+.settings-card {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 22;
+    -fx-background-insets: 10 0 0 0;
+}
+
+.admin-label {
+    -fx-font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-font-size: 18px;
+}
+
+.admin-field {
+    -fx-background-color: #d9d9d9;
+    -fx-background-radius: 4;
+    -fx-border-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-padding: 6 10 6 10;
+    -fx-prompt-text-fill: #888888;
+}
+
+
+/* ===================== OVERLAY ===================== */
+.dark-overlay {
+    -fx-background-color: rgba(0,0,0,0.75);
+}
+
+.preview-overlay {
+    -fx-background-color: rgba(10,10,10,0.9);
+}
